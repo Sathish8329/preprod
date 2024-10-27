@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cron-lowcode
-  namespace: lowcode
+  name: cron-preprod
+  namespace: preprod
 spec:
   selector:
     matchLabels:
@@ -44,8 +44,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: lowcode-cron-service
-  namespace: lowcode
+  name: preprod-cron-service
+  namespace: preprod
 spec:
   selector:
     app: cron-lowcode
