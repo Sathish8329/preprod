@@ -2,8 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lowcode-apitoken-deployment
-  namespace: lowcode
+  name: preprod-apitoken-deployment
+  namespace: preprod
 spec:
   selector:
     matchLabels:
@@ -37,8 +37,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: lowcode-apitoken-service
-  namespace: lowcode
+  name: preprod-apitoken-service
+  namespace: preprod
 spec:
   selector:
     app: apitoken
