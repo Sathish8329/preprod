@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
-  namespace: lowcode  # Specify the namespace here
+  name: preprod-deployment
+  namespace: preprod  # Specify the namespace here
 spec:
   replicas: 1
   strategy:
@@ -34,7 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: lowcode-frontend-service
+  name: preprod-frontend-service
   namespace: lowcode  # Specify the namespace here
 spec:
   selector:
