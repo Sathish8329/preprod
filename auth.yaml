@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-deployment
-  namespace: lowcode  # Specify the namespace here
+  name: auth-deployment-preprod
+  namespace: preprod  # Specify the namespace here
 spec:
   replicas: 1
   strategy:
@@ -44,8 +44,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: lowcode-auth-service
-  namespace: lowcode  # Specify the namespace here
+  name: preprod-auth-service
+  namespace: preprod  # Specify the namespace here
 spec:
   selector:
     app: auth
