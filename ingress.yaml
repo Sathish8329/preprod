@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: lowcode-ingress
-  namespace: lowcode
+  name: preprod-ingress
+  namespace: preprod
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/proxy-body-size: "100m" # Set the maximum allowed request body size to 100 MB
@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"    # Increase read timeout to 10 minutes
 spec:
   rules:
-  - host: "*.kovaion.ai"
+  - host: "*.kovaion.cloud"
     http:
       paths:
       - path: /api
@@ -41,13 +41,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kovaionai-onboarding
-  namespace: lowcode
+  namespace: preprod
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/proxy-body-size: "100m" # Set the maximum allowed request body size to 100 MB
 spec:
   rules:
-  - host: "kovaion.ai"
+  - host: "kovaion.cloud"
     http:
       paths:
       - path: /
@@ -63,13 +63,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kovaionai-onboarding-www
-  namespace: lowcode
+  namespace: preprod
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/proxy-body-size: "100m" # Set the maximum allowed request body size to 100 MB
 spec:
   rules:
-  - host: "www.kovaion.ai"
+  - host: "www.kovaion.cloud"
     http:
       paths:
       - path: /
