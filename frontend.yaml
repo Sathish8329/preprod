@@ -37,7 +37,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: preprod-frontend-service
-  namespace: lowcode  # Specify the namespace here
+  namespace: preprod  # Specify the namespace here
 spec:
   selector:
     app: frontend
