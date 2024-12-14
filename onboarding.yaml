@@ -1,1 +1,37 @@
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: preprod-frtback-deployment
+  namespace: pirappp
+spec:
+  selector:
+    matchLabels:
+      app: frtback
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frtback
+    spec:
+      nodeSelector:                            # Correct indentation for nodeSelector
+        eks.amazonaws.com/nodegroup: preprod    # Specify the node group name
+      containers:
+      - name: frtback
+        image: sathish8329/preprodonboarding:2
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: preprod-frtback-service
+  namespace: preprod
+spec:
+  selector:
+    app: frtback
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: NodePort
