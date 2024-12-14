@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: preprod-frtback-deployment
-  namespace: pirappp
+  namespace: preprod
 spec:
   selector:
     matchLabels:
