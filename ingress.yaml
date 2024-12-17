@@ -83,7 +83,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: preprod-ingress-pirapp-www
+  name: preprod-ingress-pirapp-withoutwww
   namespace: preprod
   annotations:
     kubernetes.io/ingress.class: "nginx"
