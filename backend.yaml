@@ -22,7 +22,7 @@ spec:
         eks.amazonaws.com/nodegroup: preprod    # Specify the node group name    
       containers:
       - name: api
-        image: sathish8329/backendpreprod:1096
+        image: sathish8329/backendpreprod:1119
         ports:
         - containerPort: 8000
         livenessProbe:
