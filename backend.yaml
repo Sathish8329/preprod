@@ -18,7 +18,7 @@ spec:
       labels:
         app: api
     spec:
-      nodeSelector:                            # Correct indentation for nodeSelector
+      nodeSelector:                            # Correct indentation for nodeSelectors
         eks.amazonaws.com/nodegroup: preprod    # Specify the node group name    
       containers:
       - name: api
