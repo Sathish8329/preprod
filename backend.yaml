@@ -27,14 +27,14 @@ spec:
         - containerPort: 8000
         resources:
           requests:
-            memory: "2Gi"    # Increased initial memory request
+            memory: "3Gi"    # Increased initial memory request
             cpu: "500m"
           limits:
-            memory: "4Gi"    # Increased memory limit
+            memory: "6Gi"    # Increased memory limit
             cpu: "1000m"
         env:
           - name: NODE_OPTIONS
-            value: "--max-old-space-size=3072"  # Set Node.js heap limit to 3GB        
+            value: "--max-old-space-size=4096"  # Set Node.js heap limit to 3GB        
         livenessProbe:
           httpGet:
             path: /api   # Change this path based on your application's health check endpoint
