@@ -25,6 +25,16 @@ spec:
         image: sathish8329/backendpreprod:1255
         ports:
         - containerPort: 8000        
+        resources:
+          requests:
+            memory: "750Mi"    # Lower guaranteed minimum
+            cpu: "250m"        # 0.25 CPU core
+          limits:
+            memory: "1.5Gi"    # Lower maximum
+            cpu: "500m"        # 0.5 CPU core
+        env:
+        - name: NODE_OPTIONS
+          value: "--max-old-space-size=1024"          
         livenessProbe:
           httpGet:
             path: /api   # Change this path based on your application's health check endpoint
