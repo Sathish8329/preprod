@@ -20,7 +20,6 @@ spec:
     spec:
       nodeSelector:
         eks.amazonaws.com/nodegroup: preprod
-      terminationGracePeriodSeconds: 60
       containers:
       - name: api
         image: sathish8329/backendpreprod:1255
@@ -33,29 +32,6 @@ spec:
           limits:
             memory: "2.5Gi"  # Increased memory limit
             cpu: "500m"
-        env:
-        - name: NODE_OPTIONS
-          value: "--max-old-space-size=2048 --expose-gc --gc-interval=100 --max-semi-space-size=512"
-        - name: NODE_ENV
-          value: "production"
-        - name: V8_MAX_OLD_SPACE_SIZE
-          value: "2048"
-        - name: V8_HEAP_SIZE_MODIFIER
-          value: "0.8"
-        lifecycle:
-          postStart:
-            exec:
-              command: ["/bin/sh", "-c", "node -e 'setInterval(global.gc, 5000)'"]
-          preStop:
-            exec:
-              command: ["/bin/sh","-c","node -e 'global.gc()' && sleep 2"]
-        startupProbe:
-          httpGet:
-            path: /api
-            port: 8000
-          failureThreshold: 30
-          periodSeconds: 10
-          initialDelaySeconds: 20
         livenessProbe:
           httpGet:
             path: /api
@@ -72,13 +48,6 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
-        volumeMounts:
-        - name: tmp-volume
-          mountPath: /tmp
-      volumes:
-      - name: tmp-volume
-        emptyDir:
-          sizeLimit: "1Gi"    # Increased tmp volume size
 
 ---
 apiVersion: v1
