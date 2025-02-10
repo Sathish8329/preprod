@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-deployment-preprod
-  namespace: preprod  # Specify the namespace here
+  namespace: preprod
 spec:
   replicas: 1
   selector:
@@ -18,45 +18,70 @@ spec:
       labels:
         app: api
     spec:
-      nodeSelector:                            # Correct indentation for nodeSelectors
-        eks.amazonaws.com/nodegroup: preprod    # Specify the node group name    
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: preprod
+      terminationGracePeriodSeconds: 60
       containers:
       - name: api
         image: sathish8329/backendpreprod:1255
         ports:
-        - containerPort: 8000        
+        - containerPort: 8000
         resources:
           requests:
-            memory: "750Mi"    # Lower guaranteed minimum
-            cpu: "250m"        # 0.25 CPU core
+            memory: "1Gi"
+            cpu: "250m"
           limits:
-            memory: "1.5Gi"    # Lower maximum
-            cpu: "500m"        # 0.5 CPU core
+            memory: "1.75Gi"
+            cpu: "500m"
         env:
         - name: NODE_OPTIONS
-          value: "--max-old-space-size=1024"          
+          value: "--max-old-space-size=1400 --expose-gc"
+        - name: NODE_ENV
+          value: "production"
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "echo 'Node.js container started'"]
+          preStop:
+            exec:
+              command: ["/bin/sh","-c","echo 'Container stopping'"]
+        startupProbe:
+          httpGet:
+            path: /api
+            port: 8000
+          failureThreshold: 30
+          periodSeconds: 10
+          initialDelaySeconds: 20
         livenessProbe:
           httpGet:
-            path: /api   # Change this path based on your application's health check endpoint
-            port: 8000   # Port where your application is listening
-          initialDelaySeconds:  5 # Delay before first probe
-          periodSeconds: 10         # How often to perform the probe
+            path: /api
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 5
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /api
             port: 8000
-          initialDelaySeconds: 5  # Adjust as needed
+          initialDelaySeconds: 25
           periodSeconds: 10
-          failureThreshold: 3          
+          timeoutSeconds: 5
+          failureThreshold: 3
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+      volumes:
+      - name: tmp-volume
+        emptyDir:
+          sizeLimit: "500Mi"
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: preprod-api-service
-  namespace: preprod  # Specify the namespace here
+  namespace: preprod
 spec:
   selector:
     app: api
