@@ -25,13 +25,6 @@ spec:
         image: sathish8329/backendpreprod:1309
         ports:
         - containerPort: 8000
-        resources:
-          requests:
-            memory: "2Gi"    # Increased memory request
-            cpu: "250m"
-          limits:
-            memory: "2.5Gi"  # Increased memory limit
-            cpu: "500m"
         livenessProbe:
           httpGet:
             path: /api
