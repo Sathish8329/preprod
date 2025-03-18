@@ -18,7 +18,7 @@ spec:
         eks.amazonaws.com/nodegroup: stage-private    # Specify the node group name
       containers:
       - name: frtback
-        image: sathish8329/preprodonboarding:1034
+        image: sathish8329/preprodonboarding:1.0.1886
         ports:
         - containerPort: 3000
 ---
