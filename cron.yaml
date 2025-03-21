@@ -19,7 +19,7 @@ spec:
         app: cron-preprod
     spec:
       nodeSelector:                            
-        eks.amazonaws.com/nodegroup: stage-private   
+        eks.amazonaws.com/nodegroup: preprod-private   
       containers:
       - name: cron-lowcode
         image: sathish8329/cronpreprod:1124
