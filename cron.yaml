@@ -22,6 +22,6 @@ spec:
         eks.amazonaws.com/nodegroup: preprod-private   
       containers:
       - name: cron-lowcode
-        image: sathish8329/cronpreprod:1124
+        image: sathish8329/cronpreprod:11244
         ports:
         - containerPort: 9000
