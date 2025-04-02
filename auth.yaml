@@ -22,7 +22,7 @@ spec:
         eks.amazonaws.com/nodegroup: preprod-private    # Specify the node group name
       containers:
       - name: auth
-        image: sathish8329/authpreprod:2032 
+        image: sathish8329/authpreprod:2056 
         ports:
         - containerPort: 8080
         livenessProbe:
