@@ -23,6 +23,7 @@ spec:
       containers:
       - name: frontend
         image: sathish8329/frontendpreprod:3160
+        imagePullPolicy: Always 
         ports:
         - containerPort: 5001
         readinessProbe:  # Add readiness probe
