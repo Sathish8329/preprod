@@ -22,7 +22,7 @@ spec:
         eks.amazonaws.com/nodegroup: kovaion-spot-ng    # Specify the node group name    
       containers:
       - name: frontend
-        image: sathish8329/frontendpreprod:3264
+        image: sathish8329/frontendpreprod:3280
         imagePullPolicy: Always 
         ports:
         - containerPort: 5001
