@@ -14,8 +14,8 @@ spec:
       labels:
         app: frtback
     spec:
-      nodeSelector:                            # Correct indentation for nodeSelector
-        eks.amazonaws.com/nodegroup: stage-private    # Specify the node group name
+      # nodeSelector:                            # Correct indentation for nodeSelector
+      #   eks.amazonaws.com/nodegroup: stage-private    # Specify the node group name
       containers:
       - name: frtback
         image: sathish8329/preprodonboarding:1.0.2151
