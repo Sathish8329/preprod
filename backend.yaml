@@ -18,8 +18,8 @@ spec:
       labels:
         app: api
     spec:
-      # nodeSelector:
-      #   eks.amazonaws.com/nodegroup: stage-private
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: stage-private
       containers:
       - name: api
         image: sathish8329/backendpreprod:3807
