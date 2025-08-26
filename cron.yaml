@@ -18,8 +18,8 @@ spec:
       labels:
         app: cron-preprod
     spec:
-      nodeSelector:                            
-        eks.amazonaws.com/nodegroup: preprod-private   
+      # nodeSelector:                            
+      #   eks.amazonaws.com/nodegroup: preprod-private   
       containers:
       - name: cron-lowcode
         image: sathish8329/cronpreprod:11248
