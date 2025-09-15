@@ -22,7 +22,7 @@ spec:
         eks.amazonaws.com/nodegroup: stage-private
       containers:
       - name: api
-        image: sathish8329/backendpreprod:4221
+        image: sathish8329/backendpreprod:4228
         ports:
         - containerPort: 8000
         livenessProbe:
