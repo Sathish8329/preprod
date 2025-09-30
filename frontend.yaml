@@ -30,8 +30,8 @@ spec:
           httpGet:
             path: /
             port: 5001
-          initialDelaySeconds: 30
-          periodSeconds: 10
+          initialDelaySeconds: 40
+          periodSeconds: 20
           failureThreshold: 3  # Set failure threshold to 3
 ---
 apiVersion: v1
