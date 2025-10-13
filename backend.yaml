@@ -4,7 +4,7 @@ metadata:
   name: api-deployment-preprod
   namespace: preprod
 spec:
-  replicas: 2
+  replicas: 0
   selector:
     matchLabels:
       app: api
