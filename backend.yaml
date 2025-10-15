@@ -18,6 +18,7 @@ spec:
       labels:
         app: api
     spec:
+      serviceAccountName: app-s3-access  # Add this line for IRSA
       # nodeSelector:
       #   eks.amazonaws.com/nodegroup: stage-private
       containers:
